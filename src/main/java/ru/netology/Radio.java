@@ -8,17 +8,20 @@ public class Radio {
     private int volume;
     private int minVolume = 0; // мин громкость
     private int maxVolume = 100; // макс громкость
+
     public Radio(int sizeRadioStation) {
         this.sizeRadioStation = sizeRadioStation;
         this.maxRadioStation = sizeRadioStation - 1;
     }
-    public Radio (){
+
+    public Radio() {
     }
 
 
     public int getRadioStation() {
         return radioStation;
     }
+
     public int getMaxRadioStation() {
         return maxRadioStation;
     }
@@ -36,6 +39,7 @@ public class Radio {
         }
         radioStation = newRadioStation;
     }
+
     public int getVolume() {
         return volume;
     }
@@ -66,6 +70,7 @@ public class Radio {
         }
 
     }
+
     public void increaseVolume() { // метод увеличения громкости на 1
         if (volume < maxVolume) {
             volume++;

@@ -11,16 +11,17 @@ public class RadioTest {
     Radio radioTest = new Radio(15); // ввод колличества радиостанций
     Radio radioTestVolume = new Radio();
     Radio radio = new Radio();
+
     @ParameterizedTest // выбор станций по умолчанию
     @CsvFileSource(files = "src/test/resources/RadioStationSetNormal.csv")
-    public void shouldSetRadioStationNormal(int number, int expected){
+    public void shouldSetRadioStationNormal(int number, int expected) {
 
-            radio.setRadioStation(number);
+        radio.setRadioStation(number);
 
-            int actual = radio.getRadioStation();
+        int actual = radio.getRadioStation();
 
-            Assertions.assertEquals(expected, actual);
-}
+        Assertions.assertEquals(expected, actual);
+    }
 
 
     @ParameterizedTest // ввод номера станции вручную
