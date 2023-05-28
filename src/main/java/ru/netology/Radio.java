@@ -1,7 +1,8 @@
 package ru.netology;
 
 public class Radio {
-    public int radioStation;
+    private int radioStation;
+    private int volume;
 
     public int getRadioStation() {
         return radioStation;
@@ -15,6 +16,20 @@ public class Radio {
             return;
         }
         radioStation = newRadioStation;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int newVolume) {
+        if (newVolume < 0) {
+            return;
+        }
+        if (newVolume > 100) {
+            return;
+        }
+        volume = newVolume;
     }
 
     public void next() { // метод переключения следующей станции
@@ -32,22 +47,6 @@ public class Radio {
             radioStation = 9;
         }
 
-    }
-
-    public int volume;
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int newVolume) {
-        if (newVolume < 0) {
-            return;
-        }
-        if (newVolume > 100) {
-            return;
-        }
-        volume = newVolume;
     }
 
     public void increaseVolume() { // метод увеличения громкости на 1
