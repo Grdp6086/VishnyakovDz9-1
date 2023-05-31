@@ -8,12 +8,26 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class RadioTest {
 
+    Radio radioTest = new Radio(15); // ввод колличества радиостанций
+    Radio radioTestVolume = new Radio();
+    Radio radio = new Radio();
+
+    @ParameterizedTest // выбор станций по умолчанию
+    @CsvFileSource(files = "src/test/resources/RadioStationSetNormal.csv")
+    public void shouldSetRadioStationNormal(int number, int expected) {
+
+        radio.setRadioStation(number);
+
+        int actual = radio.getRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
 
     @ParameterizedTest // ввод номера станции вручную
     @CsvFileSource(files = "src/test/resources/RadioStation.csv")
     public void ShouldSetStation(int number, int expected) {
 
-        Radio radioTest = new Radio();
 
         radioTest.setRadioStation(number);
 
@@ -27,7 +41,6 @@ public class RadioTest {
     @ParameterizedTest // переключение станций на 1 вверх
     @CsvFileSource(files = "src/test/resources/ButtonNextRadioStation.csv")
     public void ShouldIncreaseRadioStation(int number, int expected) {
-        Radio radioTest = new Radio();
 
         radioTest.setRadioStation(number);
         radioTest.next();
@@ -41,7 +54,6 @@ public class RadioTest {
     @ParameterizedTest // переключение станций на 1 вниз
     @CsvFileSource(files = "src/test/resources/ButtonPrevRadioStation.csv")
     public void ShouldSwitchPrevRadioStation(int number, int expected) {
-        Radio radioTest = new Radio();
 
         radioTest.setRadioStation(number);
         radioTest.prev();
@@ -54,11 +66,10 @@ public class RadioTest {
     @ParameterizedTest // ввод громкости вручную
     @CsvFileSource(files = "src/test/resources/RadioVolume.csv")
     public void shouldSetVolume(int number, int expected) {
-        Radio radioTest = new Radio();
 
-        radioTest.setVolume(number);
+        radioTestVolume.setVolume(number);
 
-        int actual = radioTest.getVolume();
+        int actual = radioTestVolume.getVolume();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -66,12 +77,11 @@ public class RadioTest {
     @ParameterizedTest // увелечение громкости на 1
     @CsvFileSource(files = "src/test/resources/IncreaseVolume.csv")
     public void shouldIncreaseVolume(int number, int expected) {
-        Radio radioTest = new Radio();
 
-        radioTest.setVolume(number);
-        radioTest.increaseVolume();
+        radioTestVolume.setVolume(number);
+        radioTestVolume.increaseVolume();
 
-        int actual = radioTest.getVolume();
+        int actual = radioTestVolume.getVolume();
 
         Assertions.assertEquals(expected, actual);
 
@@ -80,12 +90,11 @@ public class RadioTest {
     @ParameterizedTest // уменьшение громкости на 1
     @CsvFileSource(files = "src/test/resources/ReduceVolume.csv")
     public void shouldReduceVolume(int number, int expected) {
-        Radio radioTest = new Radio();
 
-        radioTest.setVolume(number);
-        radioTest.reduceVolume();
+        radioTestVolume.setVolume(number);
+        radioTestVolume.reduceVolume();
 
-        int actual = radioTest.getVolume();
+        int actual = radioTestVolume.getVolume();
 
         Assertions.assertEquals(expected, actual);
     }
